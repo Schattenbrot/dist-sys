@@ -7,7 +7,9 @@ import java.net.UnknownHostException;
 
 class Main {
   public static void main(String[] args) {
-    System.out.println(System.getenv("WEATHER"));
+  String sensorName = System.getenv("SENSOR_NAME");
+  String sensorValue = System.getenv("SENSOR_VALUE");
+  System.out.println("New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".");
 
     try {
       DatagramSocket socket = new DatagramSocket();
