@@ -6,19 +6,19 @@ services:
     networks:
       - sensorNet
   client:
-    build: ./sensor
+    build: ./newSensor/sensor
     environment:
       - SENSOR_NAME=sensor1
       - SENSOR_VALUE=10
     networks:
       - sensorNet
   supersensor:
-    build: ./sensor
+    build: ./_sensor
     environment:
       - SENSOR_NAME=sensor2
       - SENSOR_VALUE=30
     networks:
       - sensorNet
-  
+
 networks:
   sensorNet:
