@@ -13,17 +13,22 @@ import java.util.TimerTask;
  * Hello world!
  *
  */
-public class App 
+public class App
 {
   public String sensorName;
   public int sensorValue;
-  // public DatagramSocket socket;
-  // public InetAddress address;
+
+  public String toJson() {
+    return String.format("{\"name\":\"%s\",\"value\":%d}", sensorName, sensorValue);
+  }
 
   public void init() {
     sensorName = System.getenv("SENSOR_NAME");
     sensorValue = Integer.parseInt(System.getenv("SENSOR_VALUE"));
-    System.out.println("New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".");
+  }
+
+  public String greeting() {
+    return "New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".";
   }
 
   public void run() {
@@ -35,9 +40,8 @@ public class App
         try (DatagramSocket socket = new DatagramSocket()) {
             InetAddress address = InetAddress.getByName("server");
 
-
-            String msg = "uwuff";
-            byte[] buf = msg.getBytes();
+            String json = toJson();
+            byte[] buf = json.getBytes();
             DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
 
             socket.send(packet);
@@ -59,6 +63,7 @@ public class App
 
     App app = new App();
     app.init();
+    System.out.println(app.greeting());
     app.run();
   }
 }
