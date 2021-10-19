@@ -15,6 +15,16 @@ import java.util.TimerTask;
  */
 public class App 
 {
+  public String sensorName;
+  public int sensorValue;
+  // public DatagramSocket socket;
+  // public InetAddress address;
+
+  public void init() {
+    sensorName = System.getenv("SENSOR_NAME");
+    sensorValue = Integer.parseInt(System.getenv("SENSOR_VALUE"));
+    System.out.println("New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".");
+  }
 
   public void run() {
 
@@ -22,14 +32,14 @@ public class App
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
-        try {
-            DatagramSocket socket = new DatagramSocket();
+        try (DatagramSocket socket = new DatagramSocket()) {
             InetAddress address = InetAddress.getByName("server");
+
 
             String msg = "uwuff";
             byte[] buf = msg.getBytes();
             DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
-      
+
             socket.send(packet);
         } catch (SocketException e) {
           e.printStackTrace();
@@ -46,10 +56,9 @@ public class App
   }
   public static void main( String[] args )
   {
-    String sensorName = System.getenv("SENSOR_NAME");
-    String sensorValue = System.getenv("SENSOR_VALUE");
-    System.out.println("New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".");
 
-    new App().run();
+    App app = new App();
+    app.init();
+    app.run();
   }
 }
