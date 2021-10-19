@@ -5,15 +5,15 @@ services:
     build: ./server
     networks:
       - sensorNet
-  client:
-    build: ./newSensor/sensor
+  mavensensor:
+    build: ./sensor/mvn-sensor/sensor
     environment:
       - SENSOR_NAME=sensor1
       - SENSOR_VALUE=10
     networks:
       - sensorNet
-  supersensor:
-    build: ./_sensor
+  gosensor:
+    build: ./sensor/go-sensor
     environment:
       - SENSOR_NAME=sensor2
       - SENSOR_VALUE=30
