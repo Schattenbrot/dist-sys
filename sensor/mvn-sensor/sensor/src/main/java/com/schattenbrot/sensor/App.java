@@ -9,6 +9,8 @@ import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.json.JSONObject;
+
 /**
  * Hello world!
  *
@@ -40,7 +42,11 @@ public class App
         try (DatagramSocket socket = new DatagramSocket()) {
             InetAddress address = InetAddress.getByName("server");
 
-            String json = toJson();
+            JSONObject obj = new JSONObject();
+            obj.put("name", sensorName);
+            obj.put("value", sensorValue);
+            String json = obj.toString();
+            // String json = toJson();
             byte[] buf = json.getBytes();
             DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
 
