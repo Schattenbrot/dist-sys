@@ -29,34 +29,39 @@ public class App
     return "New Sensor: \"" + sensorName + "\" with starting value: " + sensorValue + ".";
   }
 
-  public void run() {
-
+  public void sendData(DatagramSocket socket, InetAddress address) {
     Timer timer = new Timer();
     timer.schedule(new TimerTask() {
       @Override
       public void run() {
-        try (DatagramSocket socket = new DatagramSocket()) {
-            InetAddress address = InetAddress.getByName("server");
+        JSONObject obj = new JSONObject();
+        obj.put("name", sensorName);
+        obj.put("value", sensorValue);
+        byte[] buf = obj.toString().getBytes();
+        DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
 
-            JSONObject obj = new JSONObject();
-            obj.put("name", sensorName);
-            obj.put("value", sensorValue);
-            byte[] buf = obj.toString().getBytes();
-            DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
-
-            socket.send(packet);
-        } catch (SocketException e) {
-          e.printStackTrace();
-          System.exit(1);
-        } catch (UnknownHostException e) {
-          e.printStackTrace();
-          System.exit(2);
+        try {
+          socket.send(packet);
         } catch (IOException e) {
           e.printStackTrace();
-          System.exit(3);
         }
       }
-    }, 0, 2000);
+    }, 0, 1000);
+  }
+
+  public void run() {
+    try {
+      DatagramSocket socket = new DatagramSocket();
+      InetAddress address = InetAddress.getByName("server");
+
+      this.sendData(socket, address);
+    } catch (SocketException e) {
+      e.printStackTrace();
+      System.exit(1);
+    } catch (UnknownHostException e) {
+      e.printStackTrace();
+      System.exit(2);
+    }
   }
   public static void main( String[] args )
   {
