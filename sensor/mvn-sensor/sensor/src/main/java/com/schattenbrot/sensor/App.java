@@ -20,13 +20,9 @@ public class App
   public String sensorName;
   public int sensorValue;
 
-  public String toJson() {
-    return String.format("{\"name\":\"%s\",\"value\":%d}", sensorName, sensorValue);
-  }
-
   public void init() {
-    sensorName = System.getenv("SENSOR_NAME");
-    sensorValue = Integer.parseInt(System.getenv("SENSOR_VALUE"));
+      sensorName = System.getenv("SENSOR_NAME");
+      sensorValue = Integer.parseInt(System.getenv("SENSOR_VALUE"));
   }
 
   public String greeting() {
@@ -45,9 +41,7 @@ public class App
             JSONObject obj = new JSONObject();
             obj.put("name", sensorName);
             obj.put("value", sensorValue);
-            String json = obj.toString();
-            // String json = toJson();
-            byte[] buf = json.getBytes();
+            byte[] buf = obj.toString().getBytes();
             DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080);
 
             socket.send(packet);
@@ -66,7 +60,6 @@ public class App
   }
   public static void main( String[] args )
   {
-
     App app = new App();
     app.init();
     System.out.println(app.greeting());

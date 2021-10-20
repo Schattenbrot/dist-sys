@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.schattenbrot.sensor.AppTest" time="0.021" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.schattenbrot.sensor.AppTest" time="0.022" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="F:\_Studium\dist-sys\newSensor\sensor\target\test-classes;F:\_Studium\dist-sys\newSensor\sensor\target\classes;C:\Users\aaron\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\aaron\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="F:\_Studium\dist-sys\sensor\mvn-sensor\sensor\target\test-classes;F:\_Studium\dist-sys\sensor\mvn-sensor\sensor\target\classes;C:\Users\aaron\.m2\repository\org\json\json\20210307\json-20210307.jar;C:\Users\aaron\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\aaron\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -17,9 +17,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Tools\jdk-11\bin"/>
-    <property name="sun.java.command" value="C:\Users\aaron\AppData\Local\Temp\surefire10350951595843538185\surefirebooter2756195047874386918.jar C:\Users\aaron\AppData\Local\Temp\surefire10350951595843538185 2021-10-19T21-22-53_666-jvmRun1 surefire15120719181120630808tmp surefire_02571084606090560765tmp"/>
+    <property name="sun.java.command" value="C:\Users\aaron\AppData\Local\Temp\surefire1243213565383297291\surefirebooter11380454173660441356.jar C:\Users\aaron\AppData\Local\Temp\surefire1243213565383297291 2021-10-20T15-18-52_252-jvmRun1 surefire14527938863708986324tmp surefire_018392578202565268368tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="F:\_Studium\dist-sys\newSensor\sensor\target\test-classes;F:\_Studium\dist-sys\newSensor\sensor\target\classes;C:\Users\aaron\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\aaron\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="F:\_Studium\dist-sys\sensor\mvn-sensor\sensor\target\test-classes;F:\_Studium\dist-sys\sensor\mvn-sensor\sensor\target\classes;C:\Users\aaron\.m2\repository\org\json\json\20210307\json-20210307.jar;C:\Users\aaron\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\aaron\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\aaron"/>
     <property name="user.language" value="en"/>
@@ -27,13 +27,13 @@
     <property name="java.version.date" value="2018-09-25"/>
     <property name="java.home" value="C:\Tools\jdk-11"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="F:\_Studium\dist-sys\newSensor\sensor"/>
+    <property name="basedir" value="F:\_Studium\dist-sys\sensor\mvn-sensor\sensor"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\aaron\AppData\Local\Temp\surefire10350951595843538185\surefirebooter2756195047874386918.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\aaron\AppData\Local\Temp\surefire1243213565383297291\surefirebooter11380454173660441356.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11+28"/>
@@ -48,7 +48,7 @@
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\aaron\AppData\Local\Temp\"/>
     <property name="java.version" value="11"/>
-    <property name="user.dir" value="F:\_Studium\dist-sys\newSensor\sensor"/>
+    <property name="user.dir" value="F:\_Studium\dist-sys\sensor\mvn-sensor\sensor"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>

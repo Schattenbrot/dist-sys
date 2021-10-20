@@ -5,8 +5,7 @@ FROM maven:3.8.3-jdk-11 as build
 WORKDIR /home/app
 COPY src ./src
 COPY pom.xml .
-# RUN mvn clean install -U
-RUN mvn clean package
+RUN mvn clean package assembly:single
 
 ##
 ## Package stage
