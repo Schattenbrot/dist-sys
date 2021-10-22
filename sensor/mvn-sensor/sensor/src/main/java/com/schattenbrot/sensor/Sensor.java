@@ -5,9 +5,16 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.net.UnknownHostException;
+// import java.net.UnknownHostException;
+import java.time.temporal.ChronoUnit;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Callable;
+
+import com.evanlennick.retry4j.CallExecutorBuilder;
+import com.evanlennick.retry4j.Status;
+import com.evanlennick.retry4j.config.RetryConfig;
+import com.evanlennick.retry4j.config.RetryConfigBuilder;
 
 import org.json.JSONObject;
 
@@ -92,17 +99,27 @@ public class Sensor {
    * Creates first a socket and the target address.
    * <p>
    * Then starts the sendData loop.
+   * 
+   * @param <T>
    */
-  public void run() {
+  public <T> void run() {
     try {
       DatagramSocket socket = new DatagramSocket();
-      InetAddress address = InetAddress.getByName("server");
+
+      RetryConfig config = new RetryConfigBuilder().retryIndefinitely().withDelayBetweenTries(2, ChronoUnit.SECONDS)
+          .withFixedBackoff().build();
+      Callable<InetAddress> callable = () -> {
+        return InetAddress.getByName("server");
+      };
+      Status<InetAddress> status = new CallExecutorBuilder<InetAddress>().config(config).build().execute(callable);
+      InetAddress address = status.getResult();
+      // InetAddress address = InetAddress.getByName("server");
 
       this.sendData(socket, address);
     } catch (SocketException e) {
       e.printStackTrace();
-    } catch (UnknownHostException e) {
-      e.printStackTrace();
+      // } catch (UnknownHostException e) {
+      // e.printStackTrace();
     }
   }
 }
