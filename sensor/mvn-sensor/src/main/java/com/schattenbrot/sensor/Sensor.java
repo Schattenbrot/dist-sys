@@ -22,9 +22,9 @@ import org.json.JSONObject;
  * Sensor implementation
  */
 public class Sensor {
-  private enum SensorType {
-    STORAGE, // 0
-    SHOP // 1
+  public enum SensorType {
+    OUT,
+    IN
   }
 
   private SensorType type;
@@ -35,26 +35,13 @@ public class Sensor {
    * Sensor with default variables if the environment variables weren't found or
    * incorrect.
    */
-  public Sensor() {
-    try {
-      String sensortype = System.getenv("SENSOR_TYPE");
-      if (sensortype.equals("STORAGE")) {
-        this.type = SensorType.STORAGE;
-      } else if (sensortype.equals("SHOP")) {
-        this.type = SensorType.SHOP;
-      } else {
-        System.out.println("Sensor can only be STORAGE or SHOP.\nSets default to STORAGE.");
-        this.type = SensorType.STORAGE;
-      }
-    } catch (Exception e) {
-      this.type = SensorType.STORAGE;
+  public Sensor(String sensorType, int sensorValue) {
+    if (sensorType == "out") {
+      this.type = SensorType.OUT;
+    } else {
+      this.type = SensorType.IN;
     }
-
-    try {
-      this.value = Integer.parseInt(System.getenv("SENSOR_VALUE"));
-    } catch (Exception e) {
-      this.value = 0;
-    }
+    this.value = sensorValue;
   }
 
   /**
