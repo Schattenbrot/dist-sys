@@ -6,7 +6,7 @@ services:
     networks:
       - sensorNet
   mavensensor:
-    build: ./sensor/mvn-sensor/sensor
+    build: ./sensor/mvn-sensor
     environment:
       - SENSOR_TYPE=SHOP
       - SENSOR_VALUE=10
