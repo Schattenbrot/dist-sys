@@ -1,2 +1,4 @@
 sensor/mvn-sensor/sensor/target/
 .vscode
+
+node_modules/

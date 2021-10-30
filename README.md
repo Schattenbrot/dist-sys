@@ -2,6 +2,8 @@
 
 For distributed systems practical exercise.
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](Contribute)
+
 ## Usage
 
 2 Ways of using:
@@ -102,3 +104,15 @@ Caused by: java.net.UnknownHostException: server: No address associated with hos
         at java.base/java.net.Inet4AddressImpl.lookupAllHostAddr(Native Method)
         at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(Unknown Source)
 ```
+
+## Contribute
+
+To make contribution easier this project supports the commitizen commit cli.
+
+To use this feature we need to install it first with:
+
+> npm install
+
+After it's installed you can replace the `git commit` command with:
+
+> git cz
